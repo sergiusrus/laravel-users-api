@@ -12,3 +12,6 @@
 
 ### Swagger документация
 `/api/documentation`
+
+### Генерация пользователей
+`php artisan db:seed`
