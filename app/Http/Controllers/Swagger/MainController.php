@@ -12,6 +12,13 @@ use Illuminate\Http\Request;
  * ),
  * @OA\PathItem (
  *     path="/api/"
+ * ),
+ * @OA\Compontents(
+ *     @OA\SecurityScheme(
+ *          securityScheme="bearerAuth",
+ *          type="http",
+ *          scheme="bearer"
+ *      )
  * )
  */
 class MainController extends Controller

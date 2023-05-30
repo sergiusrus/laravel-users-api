@@ -5,10 +5,35 @@ namespace App\Http\Controllers\Swagger;
 use App\Http\Controllers\Controller;
 
 /**
+ * @OA\Post(
+ *     path="/api/auth/login",
+ *     summary="Get jwt tocken",
+ *     tags={"User"},
+ *     @OA\RequestBody(
+ *          @OA\JsonContent(
+ *              allOf={
+ *                  @OA\Schema(
+ *                      @OA\Property(property="email", type="string"),
+ *                      @OA\Property(property="password", type="string"),
+ *                  )
+ *              }
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Successful",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="access_tocken", type="string"),
+ *             @OA\Property(property="tocken_type", type="string"),
+ *             @OA\Property(property="expires_in", type="integer"),
+ *         ),
+ *     )
+ * )
  * @OA\Get (
  *     path="/api/users",
  *     summary="Get users",
  *     tags={"User"},
+ *     security={{ "bearerAuth": {} }},
  *     @OA\Response(
  *         response=200,
  *         description="Successful",
@@ -25,6 +50,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/users/{id}",
  *     summary="Get user information",
  *     tags={"User"},
+ *     security={{ "bearerAuth": {} }},
  *     @OA\Parameter(
  *         name="id",
  *         description="User ID",
@@ -47,6 +73,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/users",
  *     summary="Store new user",
  *     tags={"User"},
+ *     security={{ "bearerAuth": {} }},
  *     @OA\RequestBody(
  *          @OA\JsonContent(
  *              allOf={
@@ -74,6 +101,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/users/{id}",
  *     summary="Update user",
  *     tags={"User"},
+ *     security={{ "bearerAuth": {} }},
  *     @OA\Parameter(
  *         name="id",
  *         description="User ID",
@@ -107,6 +135,7 @@ use App\Http\Controllers\Controller;
  *     path="/api/users/{id}",
  *     summary="Delete user",
  *     tags={"User"},
+ *     security={{ "bearerAuth": {} }},
  *     @OA\Parameter(
  *         name="id",
  *         description="User ID",
